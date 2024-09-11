@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+    <link rel="stylesheet" href="./styles/stylesheet.css">
+    <link rel="stylesheet" href="./styles/mobile.css">
+    <link rel="stylesheet" href="./styles/signup.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/profile.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <span id ="logo">
+          <a href="/main"  ><img src="img/logo.png"></a>
+          
+        </span>
+        <span id="profile-id">
+            <a class="material-icons" id="logoutbtn" href="/logout">logout</a>
+
+        </span>
+
+
+    </nav>
+    <!-- #40407a
+    #fff9d2 -->
+    <main>
+       
+       
+
+       <div class="profile-container">
+        <span id="prof-img">
+            <img alt="Embedded image" src="data:image/png;base64,<%= profile.profile %>">
+            <p style="color: rgb(46, 46, 46);"><%=profile.name%></p>
+        </span>
+        <div class="prof-content">
+            <div class="edit-form">
+                <form action="/update" enctype="multipart/form-data" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <input type="text" id="username" name="username" value="<%= profile.name%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile">Profile: </label>
+                        <input type="file" id="profile" name="profile">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">save</button>
+                    </div>
+                </form> 
+            </div><hr>
+            <div class="album">
+                <h2 style="color: rgb(46, 46, 46);">Category</h2>
+
+                <% arr.forEach(categoryGroup => { %>
+                <div class="card" data-category="<%= categoryGroup.category %>">
+                    <span id="pin">
+                        <img src="img/pin.png">
+                        <p id="date"></p>
+                    </span>
+                    <li id="profile">
+                        <img alt="Embedded image" src="data:image/png;base64,<%= categoryGroup.images[0].image %>">
+                    </li>
+                    <p id="card-title"><%= categoryGroup.category %></p>
+                </div>
+                <%})%>
+
+            </div>
+            
+       </div>
+
+    </main>
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            if (category) {
+            window.location.href = `/${category}`;
+        }
+        });
+    });
+      
+    </script>
+    
+</body>
+</html>

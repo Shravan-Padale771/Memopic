@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+    <link rel="stylesheet" href="./styles/stylesheet.css">
+    <link rel="stylesheet" href="./styles/mobile.css">
+    <link rel="stylesheet" href="./styles/signup.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <span id ="logo">
+          <a href="/main"  ><img src="img/logo.png"></a>
+        </span>
+
+        <span id="profile-id">
+           <a href="profile"> <img alt="Embedded image" src="data:image/png;base64,<%= content.profile %>"> </a>
+
+            <a class="material-icons" id="logoutbtn" href="/logout">logout</a>
+            
+        </span>
+       
+            
+       
+
+
+    </nav>
+    <!-- #40407a
+    #fff9d2 -->
+    <main>
+        <h2>Category: <%=category%></h2>
+        <% if(locals.album <= 0){%>
+           
+                <div class="message">
+                    <h2>Start by Uploading your memories</h2>
+                </div>
+            
+                
+        <%}else{%>
+        <div class="filters">
+            <form id="filter" action="/date" method="post">
+                <input type="submit" value="Sort by Date" name="date">
+            </form>
+            <form id="filter" action="/title" method="post">
+                <input type="submit" value="Sort by Title" name="title">
+            </form>
+            <form id="filter" action="/category" method="post">
+                <input type="submit" value="Sort by Category" name="category">
+            </form>
+        </div>
+
+        
+
+        <% for(let item of album) { %>
+            <div class="card">
+                <span id="pin">
+                    <img src="img/pin.png">
+                    <p id="date"><%=item.formatted_date%> </p>
+                </span>
+                <li id="profile">
+                    <img alt="Embedded image" src="data:image/png;base64,<%= item.image %>" class="thumbnail" onclick="openModal('<%= item.image %>')">
+                </li>
+                <p id="card-title"><%= item.title%></p>
+            </div>    
+        <% } %>
+        <%}%>
+        
+
+        
+
+    </main>
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+   
+    
+    <script src="./js/app.js"></script>
+</body>
+</html>
