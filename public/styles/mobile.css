@@ -425,7 +425,7 @@ main {
 #footrope1{
     position: absolute;
     height: 46vh;
-    width: 105%;
+    width: 112%;
     top: 115%;
     left: 24%;
     z-index: -2;
@@ -466,7 +466,7 @@ main {
 
 @keyframes leafleft{
     from{
-        transform: translate(-122%, -20%);
+        transform: translate(-124%, -20%);
            
         }
         to{
