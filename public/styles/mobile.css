@@ -426,7 +426,7 @@ main {
     position: absolute;
     height: 46vh;
     width: 100%;
-    top: 120%;
+    top: 115%;
     left: 24%;
     z-index: -2;
     animation: leafleft ease-out both;
