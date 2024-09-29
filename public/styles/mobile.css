@@ -426,11 +426,11 @@ main {
     position: absolute;
     height: 46vh;
     width: 112%;
-    top: 115%;
-    left: 24%;
+    top: 100%;
+    left: -4%;
     z-index: -2;
     animation: leafleft ease-out both;
-    animation-timeline: view(50% 45%);
+    animation-timeline: view(60% 45%);
     
 }
 
