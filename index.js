@@ -11,7 +11,7 @@ import pg from "pg";
 
 
 const app = express();
-const port = process.env.PORT;
+const port = 3000;
 const saltRounds = 10;
 
 env.config();
